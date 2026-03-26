@@ -4,8 +4,14 @@ import { View, StyleSheet, Dimensions } from 'react-native';
 const IPHONE_14_WIDTH = 390;
 const IPHONE_14_HEIGHT = 844;
 const BEZEL_RADIUS = 47;
-const NOTCH_WIDTH = 126;
-const NOTCH_HEIGHT = 34;
+
+// iPhone 14 safe area insets (exported for reference)
+export const IPHONE_14_INSETS = {
+  top: 47,
+  bottom: 34,
+  left: 0,
+  right: 0,
+};
 
 // Override Dimensions for web to return iPhone dimensions
 const originalGet = Dimensions.get.bind(Dimensions);
@@ -38,11 +44,8 @@ export function withIPhoneBezel<P extends object>(
     return (
       <View style={styles.container}>
         <View style={styles.device}>
-          {/* Notch */}
-          <View style={styles.notch}>
-            <View style={styles.speaker} />
-            <View style={styles.camera} />
-          </View>
+          {/* Dynamic Island */}
+          <View style={styles.dynamicIsland} />
           {/* Screen content */}
           <View style={styles.screen}>
             <WrappedComponent {...props} />
@@ -79,40 +82,21 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 40,
   },
-  notch: {
+  dynamicIsland: {
     position: 'absolute',
-    top: 0,
+    top: 11,
     left: '50%',
-    marginLeft: -NOTCH_WIDTH / 2,
-    width: NOTCH_WIDTH,
-    height: NOTCH_HEIGHT,
+    marginLeft: -62,
+    width: 124,
+    height: 36,
     backgroundColor: '#000',
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
+    borderRadius: 20,
     zIndex: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
-  },
-  speaker: {
-    width: 60,
-    height: 6,
-    backgroundColor: '#1c1c1e',
-    borderRadius: 3,
-  },
-  camera: {
-    width: 12,
-    height: 12,
-    backgroundColor: '#1c1c1e',
-    borderRadius: 6,
-    borderWidth: 2,
-    borderColor: '#2c2c2e',
   },
   screen: {
     flex: 1,
     overflow: 'hidden',
-    borderRadius: BEZEL_RADIUS - 10,
+    borderRadius: BEZEL_RADIUS - 1,
   },
   homeIndicatorContainer: {
     position: 'absolute',

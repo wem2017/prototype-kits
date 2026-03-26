@@ -1,15 +1,14 @@
 import {StyleSheet, View} from 'react-native';
 import {defaultTheme, Localize, NavigationContainer} from "@momo-kits/foundation";
 import language from './localization/language.json';
+import Welcome from "@/src/Welcome";
 
 export default function App() {
   return (
       <NavigationContainer
           localize={new Localize(language)}
           theme={defaultTheme}
-          screen={() => {
-            return <View style={{flex: 1, backgroundColor: 'red'}}/>;
-          }}
+          screen={Welcome}
           maxApi={undefined}
       />
   );
