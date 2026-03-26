@@ -1,0 +1,37 @@
+{
+  "name": "expo-template-blank-typescript",
+  "description": "The Blank project template includes the minimum dependencies to run and an empty root component.",
+  "license": "0BSD",
+  "version": "55.1.9",
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@expo/metro-runtime": "~55.0.6",
+    "@expo/vector-icons": "^15.1.1",
+    "expo": "~55.0.2",
+    "expo-font": "~14.0.9",
+    "expo-haptics": "~15.0.7",
+    "expo-image": "^55.0.6",
+    "expo-linear-gradient": "^55.0.9",
+    "expo-splash-screen": "31.0.10",
+    "expo-status-bar": "~55.0.4",
+    "expo-updates": "~29.0.12",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-native": "0.83.2",
+    "react-native-web": "^0.21.0",
+    "@momo-kits/foundation": "0.157.1-expo.6"
+  },
+  "resolutions": {
+    "@momo-kits/foundation": "0.157.1-expo.6"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.2",
+    "typescript": "~5.9.2"
+  }
+}
