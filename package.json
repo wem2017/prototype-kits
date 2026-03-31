@@ -46,9 +46,9 @@
     "@momo-kits/template": "0.157.1-expo.12",
     "@momo-kits/uploader": "0.157.1-expo.12",
     "@momo-kits/animated-tooltip": "0.157.1-expo.12",
-    "@lottiefiles/dotlottie-react": "latest",
-    "react-native-web-linear-gradient": "latest",
-    "react-native-svg": "latest"
+    "@lottiefiles/dotlottie-react": "0.18.7",
+    "react-native-web-linear-gradient": "1.1.2",
+    "react-native-svg": "15.15.4"
   },
   "resolutions": {
     "@momo-kits/foundation": "0.157.1-expo.12",
