@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {defaultTheme, Localize, NavigationContainer} from "@momo-kits/foundation";
 import language from './localization/language.json';
-import Welcome from "@/src/Welcome";
+import Home from "@/src/Home";
 import {Platform} from "react-native";
 
 if (Platform.OS === 'web' && typeof document !== 'undefined') {
@@ -14,7 +14,7 @@ export default function App() {
       <NavigationContainer
           localize={new Localize(language)}
           theme={defaultTheme}
-          screen={Welcome}
+          screen={Home}
           maxApi={undefined}
       />
   );
