@@ -5,7 +5,7 @@
 // Model: claude-opus-4-6
 
 import React, { useContext, useEffect, useRef } from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, ScrollView } from 'react-native';
 import {
   ApplicationContext,
   Colors,
@@ -40,6 +40,21 @@ import UploaderDemo from './demos/UploaderDemo';
 import InformationDemo from './demos/InformationDemo';
 import PaginationDemo from './demos/PaginationDemo';
 import TooltipDemo from './demos/TooltipDemo';
+import AutoCompleteDemo from './demos/AutoCompleteDemo';
+import CalendarDemo from './demos/CalendarDemo';
+import CameraDemo from './demos/CameraDemo';
+import FlashlistDemo from './demos/FlashlistDemo';
+import IconButtonDemo from './demos/IconButtonDemo';
+import ImageDemo from './demos/ImageDemo';
+import LayoutDemo from './demos/LayoutDemo';
+import LinearGradientDemo from './demos/LinearGradientDemo';
+import LogoDemo from './demos/LogoDemo';
+import LottieDemo from './demos/LottieDemo';
+import MapDemo from './demos/MapDemo';
+import QRCodeDemo from './demos/QRCodeDemo';
+import TitleDemo from './demos/TitleDemo';
+import VideoDemo from './demos/VideoDemo';
+import WebviewDemo from './demos/WebviewDemo';
 // AI-GENERATED END: demo screen imports
 
 // AI-GENERATED START: demo entries config
@@ -72,6 +87,21 @@ const DEMO_ENTRIES: DemoEntry[] = [
   { label: 'Information', icon: '24_basic_info', screen: InformationDemo },
   { label: 'Pagination', icon: '24_basic_more', screen: PaginationDemo },
   { label: 'Tooltip', icon: '24_basic_help', screen: TooltipDemo },
+  { label: 'AutoComplete', icon: '24_basic_search', screen: AutoCompleteDemo },
+  { label: 'Calendar', icon: '24_basic_calendar', screen: CalendarDemo },
+  { label: 'Camera', icon: '24_basic_camera', screen: CameraDemo },
+  { label: 'FlashList', icon: '24_basic_list', screen: FlashlistDemo },
+  { label: 'IconButton', icon: '24_basic_cursor', screen: IconButtonDemo },
+  { label: 'Image', icon: '24_basic_image', screen: ImageDemo },
+  { label: 'Layout', icon: '24_basic_grid', screen: LayoutDemo },
+  { label: 'LinearGradient', icon: '24_basic_color', screen: LinearGradientDemo },
+  { label: 'Logo', icon: '24_basic_home', screen: LogoDemo },
+  { label: 'Lottie', icon: '24_basic_play', screen: LottieDemo },
+  { label: 'Map', icon: '24_basic_location', screen: MapDemo },
+  { label: 'QR Code', icon: '24_basic_qr_code', screen: QRCodeDemo },
+  { label: 'Title', icon: '24_basic_text', screen: TitleDemo },
+  { label: 'Video', icon: '24_basic_play', screen: VideoDemo },
+  { label: 'Webview', icon: '24_basic_globe', screen: WebviewDemo },
 ];
 // AI-GENERATED END: demo entries config
 
@@ -97,27 +127,37 @@ const HomeScreen: React.FC<NavigationScreenProps> = ({ navigation }) => {
       navigation={navigation}
       scrollable
       useGridLayout={false}
-      backgroundColor={Colors.black_02}>
+      backgroundColor={Colors.black_02}
+>
       <View style={styles.grid}>
-        {DEMO_ENTRIES.map((entry) => (
-          <TouchableOpacity
-            key={entry.label}
-            style={styles.card}
-            activeOpacity={0.7}
-            onPress={() => handlePress(entry)}>
-            <Icon
-              source={entry.icon}
-              size={24}
-              color={Colors.pink_06}
-            />
-            <Text
-              typography="description_default_semibold"
-              color={Colors.black_11}
-              style={styles.cardLabel}>
-              {entry.label}
-            </Text>
-          </TouchableOpacity>
-        ))}
+        {Array.from(
+          { length: Math.ceil(DEMO_ENTRIES.length / 2) },
+          (_, rowIndex) => (
+            <View key={rowIndex} style={styles.row}>
+              {DEMO_ENTRIES.slice(rowIndex * 2, rowIndex * 2 + 2).map(
+                (entry) => (
+                  <TouchableOpacity
+                    key={entry.label}
+                    style={styles.card}
+                    activeOpacity={0.7}
+                    onPress={() => handlePress(entry)}>
+                    <Icon
+                      source={entry.icon}
+                      size={24}
+                      color={Colors.pink_06}
+                    />
+                    <Text
+                      typography="description_default_regular"
+                      color={Colors.black_11}
+                      style={styles.cardLabel}>
+                      {entry.label}
+                    </Text>
+                  </TouchableOpacity>
+                ),
+              )}
+            </View>
+          ),
+        )}
       </View>
     </Screen>
   );
@@ -129,13 +169,16 @@ export default HomeScreen;
 // AI-GENERATED START: styles
 const styles = StyleSheet.create({
   grid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
     padding: Spacing.M,
+    gap: Spacing.M,
+    height: 100
+  },
+  row: {
+    flexDirection: 'row',
     gap: Spacing.M,
   },
   card: {
-    width: '47%',
+    flex: 1,
     backgroundColor: 'white',
     borderRadius: 12,
     padding: Spacing.M,
